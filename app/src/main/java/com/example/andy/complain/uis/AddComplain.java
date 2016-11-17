@@ -1,6 +1,7 @@
 package com.example.andy.complain.uis;
 
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -157,9 +158,40 @@ public class AddComplain extends Fragment {
         //Initializing the button for click listener for submiting complain
         Button submitComplain=(Button)view.findViewById(R.id.btn_complain_submit);
 
+        //Spinner for selecting the category
+        Spinner category=(Spinner)view.findViewById(R.id.spi_complain_category);
+
+        //Spinner for selecting the country eg(Nepal)
+        Spinner country=(Spinner)view.findViewById(R.id.spi_complain_country);
+
+        //Adapter initializing which is used to link list of category with the category spinner
+        ArrayAdapter<String> categoryAdapter;
+
+        //Adapter initializing which is used to link list of country with the country spinner
+        ArrayAdapter<String> countryAdapter;
+
+        //Setting the adapter for the category and setting the adapter
+        categoryAdapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_expandable_list_item_1,categoryList);
+        category.setAdapter(categoryAdapter);
+
+        //Getting the resource from the string
+        Resources res = getActivity().getResources();
+        urlList = res.getStringArray(R.array.country);
+
+        //Setting adapter for the country and setting the adapter
+        countryAdapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,urlList);
+        country.setAdapter(countryAdapter);
 
 
-             //   cmpsubject,cmpdetails,zip,city,website,confircode;
+
+
+
+
+
+
+
+
+        //   cmpsubject,cmpdetails,zip,city,website,confircode;
 
         submitComplain.setOnClickListener(new View.OnClickListener() {
             @Override
